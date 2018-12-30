@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AmiibosModule } from './amiibos.module';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, share } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 
 export interface Amiibo {
@@ -27,7 +27,8 @@ export class AmiibosService {
 
   public get amiibos(): Observable<Amiibo[]> {
     if (!this._amiibos) {
-      this._amiibos = this.http.get<Amiibo[]>('https://amiibos-elm.herokuapp.com/api/amiibos');
+      this._amiibos = this.http.get<Amiibo[]>('https://amiibos-elm.herokuapp.com/api/amiibos')
+        .pipe(share());
     }
     return this._amiibos;
   }
@@ -52,7 +53,7 @@ export class AmiibosService {
         aggregate[amiibo.series.name] = amiibo.series;
       }
       return aggregate;
-    });
+    }, {});
 
     return Object.values(amiiboSeriesByName);
   }

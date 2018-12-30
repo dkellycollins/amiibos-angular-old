@@ -1,0 +1,5 @@
+<mat-nav-list>
+  <a mat-list-item *ngFor="let series of amiiboSeries | async;" href="/amiibos/{{series.name}}" >
+    {{series.displayName}}
+  </a>
+</mat-nav-list>

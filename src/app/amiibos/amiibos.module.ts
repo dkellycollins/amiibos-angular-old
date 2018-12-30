@@ -5,14 +5,17 @@ import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { AmiibosService } from './amiibos.service';
 import { AmiibosListPageComponent } from './amiibos-list-page/amiibos-list-page.component';
+import { AmiiboSeriesNavigationComponent } from './amiibo-series-navigation/amiibo-series-navigation.component';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
-  declarations: [AmiibosTableComponent, AmiibosListPageComponent],
+  declarations: [AmiibosTableComponent, AmiibosListPageComponent, AmiiboSeriesNavigationComponent],
   providers: [AmiibosService],
   imports: [
     CommonModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    MatListModule
   ]
 })
 export class AmiibosModule { }

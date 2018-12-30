@@ -1,5 +1,7 @@
 <mat-drawer-container>
-  <mat-drawer #navigation mode="over" opened>Navigation</mat-drawer>
+  <mat-drawer #navigation mode="over">
+    <router-outlet name="navigation"></router-outlet>
+  </mat-drawer>
   <mat-drawer-content>
     <mat-toolbar color="primary">
       <button mat-icon-button (click)="navigation.toggle()">
