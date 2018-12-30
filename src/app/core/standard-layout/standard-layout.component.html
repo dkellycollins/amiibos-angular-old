@@ -1,4 +1,12 @@
-<mat-toolbar color="primary">
-  <span>Amiibos</span>
-</mat-toolbar>
-<router-outlet></router-outlet>
+<mat-drawer-container>
+  <mat-drawer #navigation mode="over" opened>Navigation</mat-drawer>
+  <mat-drawer-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="navigation.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Amiibos</span>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
