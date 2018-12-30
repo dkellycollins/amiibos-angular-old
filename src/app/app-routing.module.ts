@@ -3,11 +3,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { CoreModule } from './core/core.module';
 import { AmiibosModule } from './amiibos/amiibos.module';
 import { StandardLayoutComponent } from './core/standard-layout/standard-layout.component';
-import { AmiibosTableComponent } from './amiibos/amiibos-table/amiibos-table.component';
+import { AmiibosListPageComponent } from './amiibos/amiibos-list-page/amiibos-list-page.component';
 
 const routes: Routes = [
   { path: '', component: StandardLayoutComponent, children: [
-    { path: 'amiibos', component: AmiibosTableComponent },
+    { path: 'amiibos/:series', component: AmiibosListPageComponent },
+    { path: 'amiibos', component: AmiibosListPageComponent },
     { path: '', redirectTo: '/amiibos', pathMatch: 'full' }
   ]},
   { path: '**', redirectTo: '/amiibos'}

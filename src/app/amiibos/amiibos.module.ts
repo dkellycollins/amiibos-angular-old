@@ -4,9 +4,10 @@ import { AmiibosTableComponent } from './amiibos-table/amiibos-table.component';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { AmiibosService } from './amiibos.service';
+import { AmiibosListPageComponent } from './amiibos-list-page/amiibos-list-page.component';
 
 @NgModule({
-  declarations: [AmiibosTableComponent],
+  declarations: [AmiibosTableComponent, AmiibosListPageComponent],
   providers: [AmiibosService],
   imports: [
     CommonModule,

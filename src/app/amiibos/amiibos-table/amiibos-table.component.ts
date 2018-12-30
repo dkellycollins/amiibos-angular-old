@@ -1,21 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { AmiibosService } from '../amiibos.service';
+import { Component, Input } from '@angular/core';
+import { Amiibo } from '../amiibos.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-amiibos-table',
   templateUrl: './amiibos-table.component.html'
 })
-export class AmiibosTableComponent implements OnInit {
+export class AmiibosTableComponent {
+
+  @Input()
+  dataSource: Observable<Amiibo[]>;
 
   displayedColumns = ['name', 'series', 'releaseDate'];
-  dataSource = undefined;
 
-  constructor(
-    private amiibosService: AmiibosService
-  ) { }
-
-  ngOnInit() {
-    this.dataSource = this.amiibosService.amiibos;
-  }
+  constructor() { }
 
 }
