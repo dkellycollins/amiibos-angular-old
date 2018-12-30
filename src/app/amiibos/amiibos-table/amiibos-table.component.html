@@ -1,3 +1,17 @@
-<p>
-  amiibos-table works!
-</p>
+<mat-table #table [dataSource]="dataSource">
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+    <mat-cell *matCellDef="let amiibo">{{amiibo.displayName}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="series">
+    <mat-header-cell *matHeaderCellDef>Series</mat-header-cell>
+    <mat-cell *matCellDef="let amiibo">{{amiibo.series.displayName}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="releaseDate">
+    <mat-header-cell *matHeaderCellDef>Release Date</mat-header-cell>
+    <mat-cell *matCellDef="let amiibo">{{amiibo.releaseDate}}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
