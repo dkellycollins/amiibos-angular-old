@@ -275,6 +275,9 @@ MIT
 @angular/router
 MIT
 
+@angular/animations
+MIT
+
 @angular/cdk
 MIT
 The MIT License
@@ -325,12 +328,22 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 
+@angular/material/sidenav
+
 @angular/material/toolbar
 
-@angular/material/table
+@angular/material/button
 
-@angular/animations
+@angular/material/icon
+
+@angular/forms
 MIT
+
+@angular/material/core
+
+@angular/material/list
+
+@angular/material/table
 
 zone.js
 MIT
