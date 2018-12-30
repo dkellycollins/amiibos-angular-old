@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { AmiibosService } from '../amiibos.service';
 
 @Component({
   selector: 'app-amiibos-table',
@@ -11,11 +11,11 @@ export class AmiibosTableComponent implements OnInit {
   dataSource = undefined;
 
   constructor(
-    private http: HttpClient
+    private amiibosService: AmiibosService
   ) { }
 
   ngOnInit() {
-    this.dataSource = this.http.get('https://amiibos-elm.herokuapp.com/api/amiibos');
+    this.dataSource = this.amiibosService.amiibos;
   }
 
 }
