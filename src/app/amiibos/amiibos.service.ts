@@ -28,14 +28,20 @@ export class AmiibosService {
   public get amiibos(): Observable<Amiibo[]> {
     if (!this._amiibos) {
       this._amiibos = this.http.get<Amiibo[]>('https://amiibos-elm.herokuapp.com/api/amiibos')
-        .pipe(share());
+        .pipe(
+          map(this.orderByName),
+          share()
+        );
     }
     return this._amiibos;
   }
 
   public get amiibosSeries(): Observable<AmiiboSeries[]> {
     return this.amiibos
-      .pipe(map(this.mapToUniqueAmiiboSeries));
+      .pipe(
+        map(this.mapToUniqueAmiiboSeries),
+        map(this.orderByName)
+      );
   }
 
   public filterAmiibos(series?: string): Observable<Amiibo[]> {
@@ -49,7 +55,7 @@ export class AmiibosService {
 
   private mapToUniqueAmiiboSeries(amiibos: Amiibo[]): AmiiboSeries[] {
     const amiiboSeriesByName = amiibos.reduce((aggregate, amiibo) => {
-      if (!aggregate[amiibo.series.name]) {
+      if (amiibo.series.name && !aggregate[amiibo.series.name]) {
         aggregate[amiibo.series.name] = amiibo.series;
       }
       return aggregate;
@@ -60,5 +66,9 @@ export class AmiibosService {
 
   private filterBySeries(series: string): (amiibos: Amiibo[]) => Amiibo[] {
     return (amiibos) => amiibos.filter(amiibo => amiibo.series.name === series);
+  }
+
+  private orderByName<T extends { displayName: string }>(items: Array<T>): Array<T> {
+    return items.sort((a, b) => a.displayName.localeCompare(b.displayName));
   }
 }
